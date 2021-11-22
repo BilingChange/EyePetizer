@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
  * @description:
  *
  * @author: Y.F
- * @e-mail: yuanfan3@01zhuanche.com
+ * @e-mail: bilingchange@126.com
  * @date: on 2021/4/21    14:05.
  **/
 class DetailActivity : AppCompatActivity() {

@@ -18,7 +18,5 @@ local.properties
 /buildSrc/build/
 /.idea/vcs.xml
 /.idea/.gitignore
-/gradle/wrapper/gradle-wrapper.jar
-/gradle/wrapper/gradle-wrapper.properties
 /desktop.ini
 /.idea/
