@@ -1,2 +1,4 @@
 rootProject.name = "EyePetizer"
 include ':app'
+include ':lib-common'
+include ':lib-base'

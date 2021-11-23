@@ -253,7 +253,9 @@ dependencies {
 //    implementation(project(":lib_okhttp_interceptor"))
 //    implementation(project(":lib_recyclerview"))
 //    implementation(project(":lib_views_custom"))
-//    implementation(project(":lib_common"))
+
+//    implementation(project(":lib-base"))
+//    implementation(project(":lib-common"))
 
     // 测试
     testImplementation(AppConfig.deps.test_junit)

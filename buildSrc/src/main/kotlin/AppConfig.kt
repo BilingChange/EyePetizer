@@ -75,14 +75,16 @@ object AppConfig {
         const val room_version = "2.2.5"
 
         /** paging 版本 */
-        const val paging_version = "3.0.0-alpha09"
-//    const val paging_version = "2.1.2"
+        const val paging_version = "3.1.0"
 
         /** navigation 版本 */
-        const val navigation_version = "2.3.1"
+        const val navigation_version = "2.3.5"
 
         /** lifecycle 版本 */
-        const val lifecycle_version = "2.2.0"
+        const val lifecycle_version = "2.3.1"
+
+        /** lifecycle 版本 */
+        const val lifecycle_extensions = "2.2.0"
 
         /** activity 版本 */
         const val activity_version = "1.3.1"
@@ -135,6 +137,9 @@ object AppConfig {
         /** BRVAH 版本 */
         const val base_rv_helper = "3.0.4"
 
+        /** multitype 版本 */
+        const val multitype = "4.2.0"
+
         /** mmkv 版本 */
         const val tencent_mmkv = "1.2.5"
 
@@ -154,10 +159,10 @@ object AppConfig {
         const val test_mokito_inline = "org.mockito:mockito-inline:${version.test_mokito_version}"
         const val test_mokito_android = "org.mockito:mockito-android:${version.test_mokito_version}"
         const val test_uiautomator_v18 = "com.android.support.test.uiautomator:uiautomator-v18:2.1.3"
-        const val androidx_test_ext_junit = "androidx.test.ext:junit:1.1.1"
+        const val androidx_test_ext_junit = "androidx.test.ext:junit:1.1.2"
         const val androidx_test_rules = "androidx.test:rules:1.2.0"
         const val androidx_test_runner = "androidx.test:runner:1.2.0"
-        const val androidx_test_espresso_core = "androidx.test.espresso:espresso-core:3.2.0"
+        const val androidx_test_espresso_core = "androidx.test.espresso:espresso-core:3.3.0"
 
         /** Kotlin */
         const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${version.kotlin_version}"
@@ -175,7 +180,7 @@ object AppConfig {
         const val androidx_appcompat = "androidx.appcompat:appcompat:1.3.1"
 
         /** androidx material */
-        const val androidx_material = "com.google.android.material:material:1.2.1"
+        const val androidx_material = "com.google.android.material:material:1.4.0"
 
         /** androidx recyclerview */
         const val androidx_recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
@@ -202,7 +207,7 @@ object AppConfig {
         const val androidx_fragment_ktx = "androidx.fragment:fragment-ktx:${version.fragment_version}"
 
         /** androidx lifecycle */
-        const val androidx_lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${version.lifecycle_version}"
+        const val androidx_lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${version.lifecycle_extensions}"
         const val androidx_lifecycle_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:${version.lifecycle_version}"
         const val androidx_lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycle_version}"
         const val androidx_lifecycle_livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycle_version}"
@@ -216,21 +221,21 @@ object AppConfig {
 
         /** androidx paging */
         const val androidx_paging_runtime = "androidx.paging:paging-runtime:${version.paging_version}"
-        const val androidx_paging_common = "androidx.paging:paging-common:${version.paging_version}"
-        const val androidx_paging_rxjava2 = "androidx.paging:paging-rxjava2:${version.paging_version}"
         const val androidx_paging_runtime_ktx = "androidx.paging:paging-runtime-ktx:${version.paging_version}"
+        const val androidx_paging_common = "androidx.paging:paging-common:${version.paging_version}"
         const val androidx_paging_common_ktx = "androidx.paging:paging-common-ktx:${version.paging_version}"
+        const val androidx_paging_rxjava2 = "androidx.paging:paging-rxjava2:${version.paging_version}"
         const val androidx_paging_rxjava2_ktx = "androidx.paging:paging-rxjava2-ktx:${version.paging_version}"
 
         /** androidx navigation */
         const val androidx_navigation_fragment = "androidx.navigation:navigation-fragment:${version.navigation_version}"
-        const val androidx_navigation_ui = "androidx.navigation:navigation-ui:${version.navigation_version}"
-        const val androidx_navigation_runtime = "androidx.navigation:navigation-runtime:${version.navigation_version}"
-        const val androidx_navigation_common = "androidx.navigation:navigation-common:${version.navigation_version}"
         const val androidx_navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${version.navigation_version}"
+        const val androidx_navigation_ui = "androidx.navigation:navigation-ui:${version.navigation_version}"
         const val androidx_navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:${version.navigation_version}"
-        const val androidx_navigation_runtime_ktx = "androidx.navigation:navigation-runtime-ktx:${version.navigation_version}"
+        const val androidx_navigation_common = "androidx.navigation:navigation-common:${version.navigation_version}"
         const val androidx_navigation_common_ktx = "androidx.navigation:navigation-common-ktx:${version.navigation_version}"
+        const val androidx_navigation_runtime = "androidx.navigation:navigation-runtime:${version.navigation_version}"
+        const val androidx_navigation_runtime_ktx = "androidx.navigation:navigation-runtime-ktx:${version.navigation_version}"
 
         /**
          * Logger 日志打印
@@ -281,11 +286,11 @@ object AppConfig {
          * - Github：[https://github.com/InsertKoinIO/koin]
          */
         const val koin_scope = "org.koin:koin-androidx-scope:${Versions.koin_version}"
-        const val koin_viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin_version}"
-        const val koin_fragment = "org.koin:koin-androidx-fragment:${Versions.koin_version}"
-        const val koin_workmanager = "org.koin:koin-androidx-workmanager:${Versions.koin_version}"
-        const val koin_compose = "org.koin:koin-androidx-compose:${Versions.koin_version}"
         const val koin_ext = "org.koin:koin-androidx-ext:${Versions.koin_version}"
+        const val koin_compose = "org.koin:koin-androidx-compose:${Versions.koin_version}"
+        const val koin_fragment = "org.koin:koin-androidx-fragment:${Versions.koin_version}"
+        const val koin_viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin_version}"
+        const val koin_workmanager = "org.koin:koin-androidx-workmanager:${Versions.koin_version}"
 
         /**
          * 美团多渠道
@@ -387,6 +392,7 @@ object AppConfig {
          * - Github: [https://github.com/CymChad/BaseRecyclerViewAdapterHelper]
          */
         const val base_rv_helper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.base_rv_helper}"
+        const val multitype = "com.drakeet.multitype:multitype:${version.multitype}"
 
         /**
          * AgentWeb
