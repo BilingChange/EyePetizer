@@ -27,7 +27,6 @@ android {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
-            isZipAlignEnabled = false
             isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
@@ -36,7 +35,6 @@ android {
         }
         getByName("release") {
             isMinifyEnabled = true
-            isZipAlignEnabled = true
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
@@ -98,9 +96,12 @@ dependencies {
     implementation(AppConfig.deps.androidx_activity_ktx)
     // fragment
     implementation(AppConfig.deps.androidx_fragment_ktx)
+    // startup-runtime
+    implementation(AppConfig.deps.startup_runtime)
 
     // LifeCycle 拓展
     implementation(AppConfig.deps.androidx_lifecycle_ktx)
+    implementation(AppConfig.deps.androidx_lifecycle_common_java8)
     implementation(AppConfig.deps.androidx_lifecycle_extensions)
     // ViewModel 拓展
     implementation(AppConfig.deps.androidx_lifecycle_viewmodel_ktx)

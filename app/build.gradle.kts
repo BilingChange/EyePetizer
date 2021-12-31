@@ -77,7 +77,7 @@ android {
     }
 
     // 维度
-    flavorDimensions("version")
+    flavorDimensions.add("version")
 
     productFlavors {
         // 正式线上版本
@@ -122,10 +122,15 @@ android {
 
     // dex 配置
     dexOptions {
+        //忽略方法数限制的检查
         jumboMode = true
+        //加快重新编译的速度
         dexInProcess = true
+        //是否对依赖的库进行dex预处理来是你的增量构建更快速
         preDexLibraries = true
+        //为DEX编译器设置最大的堆大小
         javaMaxHeapSize = "4g"
+        //设置最大的线程数量使用
         maxProcessCount = 6
         keepRuntimeAnnotatedClasses = false
     }
@@ -196,7 +201,8 @@ dependencies {
     implementation(AppConfig.deps.androidx_fragment_ktx)
     // ktx
     implementation(AppConfig.deps.androidx_core_ktx)
-
+    // Androidx startup
+    implementation(AppConfig.deps.androidx_startup)
     // LifeCycle 拓展
     implementation(AppConfig.deps.androidx_lifecycle_ktx)
     implementation(AppConfig.deps.androidx_lifecycle_extensions)

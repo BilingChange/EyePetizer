@@ -81,7 +81,7 @@ object AppConfig {
         const val navigation_version = "2.3.5"
 
         /** lifecycle 版本 */
-        const val lifecycle_version = "2.3.1"
+        const val lifecycle_version = "2.4.0"
 
         /** lifecycle 版本 */
         const val lifecycle_extensions = "2.2.0"
@@ -91,6 +91,9 @@ object AppConfig {
 
         /** fragment 版本 */
         const val fragment_version = "1.3.1"
+
+        /** startup-runtime 版本 */
+        const val startup_runtime = "1.1.0"
 
         /** koin 版本 */
         const val koin_version = "2.2.1"
@@ -170,6 +173,9 @@ object AppConfig {
         const val kotlin_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${version.kotlin_version}"
         const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${version.kotlin_version}"
 
+        /** Androidx startup */
+        const val androidx_startup = "androidx.startup:startup-runtime:1.1.0"
+
         /** Findbugs Jsr */
         const val findbugs_jsr = "com.google.code.findbugs:jsr305:3.0.2"
 
@@ -206,11 +212,15 @@ object AppConfig {
         const val androidx_fragment = "androidx.fragment:fragment:${version.fragment_version}"
         const val androidx_fragment_ktx = "androidx.fragment:fragment-ktx:${version.fragment_version}"
 
+        /** startup-runtime */
+        const val startup_runtime = "androidx.startup:startup-runtime:${version.startup_runtime}"
+
         /** androidx lifecycle */
         const val androidx_lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${version.lifecycle_extensions}"
         const val androidx_lifecycle_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:${version.lifecycle_version}"
         const val androidx_lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycle_version}"
         const val androidx_lifecycle_livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycle_version}"
+        const val androidx_lifecycle_common_java8 = "androidx.lifecycle:lifecycle-common-java8:${version.lifecycle_version}"
 
         /** androidx room */
         const val androidx_room_runtime = "androidx.room:room-runtime:${version.room_version}"
