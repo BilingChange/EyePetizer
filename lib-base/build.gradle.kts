@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Lint
+
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -5,23 +7,18 @@ plugins {
 }
 
 android {
-
     // 编译 SDK 版本
-    compileSdkVersion(AppConfig.buildConfig.compile_sdk_version)
+    compileSdk = AppConfig.buildConfig.compile_sdk_version
     // 编译工具版本
-    buildToolsVersion(AppConfig.buildConfig.build_tools_version)
+    buildToolsVersion = AppConfig.buildConfig.build_tools_version
     // 资源前缀
     resourcePrefix("base")
 
     defaultConfig {
         // 最低支持版本
-        minSdkVersion(AppConfig.buildConfig.min_sdk_version)
+        minSdk = AppConfig.buildConfig.min_sdk_version
         // 目标 SDK 版本
-        targetSdkVersion(AppConfig.buildConfig.target_sdk_version)
-        // 应用版本号
-        versionCode = AppConfig.buildConfig.version_code
-        // 应用版本名
-        versionName = AppConfig.buildConfig.version_name
+        targetSdk = AppConfig.buildConfig.target_sdk_version
     }
 
     buildTypes {
@@ -58,15 +55,16 @@ android {
         viewBinding = true
     }
 
-    lintOptions {
+    // 出现错误不终止编译
+    fun Lint.() {
         // 出现错误不终止编译
-        isAbortOnError = false
+        abortOnError = false
     }
 
     // Java 版本配置
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     // kotlin Jvm 版本

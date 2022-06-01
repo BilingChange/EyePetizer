@@ -8,7 +8,7 @@ import com.bili.base.utils.inflateBindingWithGeneric
 /**
  * @description:
  *
- * @author: Y.F
+ * @author: bili
  * @e-mail: bilingchange@126.com
  * @date: on 2021/11/23    18:00.
  **/

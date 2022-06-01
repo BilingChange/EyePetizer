@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package com.bili.base
 
 import android.view.View

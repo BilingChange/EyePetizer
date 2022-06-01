@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Lint
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -9,9 +11,9 @@ plugins {
 android {
 
     // 编译 SDK 版本
-    compileSdkVersion(AppConfig.buildConfig.compile_sdk_version)
+    compileSdk = AppConfig.buildConfig.compile_sdk_version
     // 编译工具版本
-    buildToolsVersion(AppConfig.buildConfig.build_tools_version)
+    buildToolsVersion = AppConfig.buildConfig.build_tools_version
     // 资源前缀
     resourcePrefix("app")
 
@@ -19,9 +21,9 @@ android {
         // 应用 id
         applicationId = AppConfig.buildConfig.application_id
         // 最低支持版本
-        minSdkVersion(AppConfig.buildConfig.min_sdk_version)
+        minSdk = AppConfig.buildConfig.min_sdk_version
         // 目标 SDK 版本
-        targetSdkVersion(AppConfig.buildConfig.target_sdk_version)
+        targetSdk = AppConfig.buildConfig.target_sdk_version
         // 应用版本号
         versionCode = AppConfig.buildConfig.version_code
         // 应用版本名
@@ -40,16 +42,16 @@ android {
             keyPassword = AppConfig.signingConfig.key_password
             storeFile = file(AppConfig.signingConfig.store_file)
             storePassword = AppConfig.signingConfig.store_password
-            isV1SigningEnabled = true
-            isV2SigningEnabled = true
+            enableV1Signing = true
+            enableV2Signing = true
         }
         create("release") {
             keyAlias = AppConfig.signingConfig.key_alias
             keyPassword = AppConfig.signingConfig.key_password
             storeFile = file(AppConfig.signingConfig.store_file)
             storePassword = AppConfig.signingConfig.store_password
-            isV1SigningEnabled = true
-            isV2SigningEnabled = true
+            enableV1Signing = true
+            enableV2Signing = true
         }
     }
 
@@ -82,7 +84,7 @@ android {
     productFlavors {
         // 正式线上版本
         create("online") {
-            dimension("version")
+             dimension = "version"
             // 版本名后缀
             versionNameSuffix = "_online"
             // 是否使用线上环境
@@ -91,7 +93,7 @@ android {
 
         // 测试版本
         create("offline") {
-            dimension("version")
+            dimension = "version"
             // 应用包名后缀
             applicationIdSuffix = ".offline"
             // 版本名后缀
@@ -102,7 +104,7 @@ android {
 
         // 开发版本
         create("dev") {
-            dimension("version")
+            dimension = "version"
             // 应用包名后缀
             applicationIdSuffix = ".dev"
             // 版本名后缀
@@ -142,9 +144,10 @@ android {
         viewBinding = true
     }
 
-    lintOptions {
+    // 出现错误不终止编译
+    fun Lint.() {
         // 出现错误不终止编译
-        isAbortOnError = false
+        abortOnError = false
     }
 
     // 配置 APK 输出路径
@@ -158,8 +161,8 @@ android {
 
     // Java 版本配置
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     // kotlin Jvm 版本
@@ -227,8 +230,11 @@ dependencies {
     implementation(AppConfig.deps.retrofit_converter_kt)
     // Glide
     implementation(AppConfig.deps.coil)
+    //startup_runtime
+    implementation(AppConfig.deps.startup_runtime)
     // MMKV 数据存储
     implementation(AppConfig.deps.tencent_mmkv)
+    //Arouter
     implementation(AppConfig.deps.arouter_api)
     kapt(AppConfig.deps.arouter_compiler)
 

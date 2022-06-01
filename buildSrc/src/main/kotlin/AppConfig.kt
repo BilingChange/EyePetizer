@@ -137,6 +137,9 @@ object AppConfig {
         /** Zxing 版本 */
         const val zxing_version = "3.4.0"
 
+        /** Huawei scan kit 版本 */
+        const val scan_kit = "1.1.3.301"
+
         /** BRVAH 版本 */
         const val base_rv_helper = "3.0.4"
 
@@ -290,6 +293,11 @@ object AppConfig {
          * - Github：[https://github.com/zxing/zxing]
          */
         const val zxing = "com.google.zxing:core:${Versions.zxing_version}"
+        /**
+         * Huawei scan kit
+         * - Github：[https://github.com/zxing/zxing]
+         */
+        const val scan_kit = "com.huawei.hms:scan:${Versions.scan_kit}"
 
         /**
          * Koin
