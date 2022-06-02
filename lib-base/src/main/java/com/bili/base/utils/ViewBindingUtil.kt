@@ -21,57 +21,65 @@ import java.lang.reflect.ParameterizedType
  * @date: on 2021/11/23    18:01.
  **/
 
-@JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater): VB =
-  withGenericBindingClass<VB>(this) { clazz ->
-    clazz.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VB
-  }.also { binding ->
-    if (this is ComponentActivity && binding is ViewDataBinding) {
-      binding.lifecycleOwner = this
-    }
-  }
+object ViewBindingUtil {
 
-@JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Any.inflateBindingWithGeneric(layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB =
-  withGenericBindingClass<VB>(this) { clazz ->
-    clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
-      .invoke(null, layoutInflater, parent, attachToParent) as VB
-  }.also { binding ->
-    if (this is Fragment && binding is ViewDataBinding) {
-      binding.lifecycleOwner = viewLifecycleOwner
-    }
-  }
-
-@JvmName("inflateWithGeneric")
-fun <VB : ViewBinding> Any.inflateBindingWithGeneric(parent: ViewGroup): VB =
-  inflateBindingWithGeneric(LayoutInflater.from(parent.context), parent, false)
-
-fun <VB : ViewBinding> Any.bindViewWithGeneric(view: View): VB =
-  withGenericBindingClass<VB>(this) { clazz ->
-    clazz.getMethod("bind", View::class.java).invoke(null, view) as VB
-  }.also { binding ->
-    if (this is Fragment && binding is ViewDataBinding) {
-      binding.lifecycleOwner = viewLifecycleOwner
-    }
-  }
-
-private fun <VB : ViewBinding> withGenericBindingClass(any: Any, block: (Class<VB>) -> VB): VB {
-  var genericSuperclass = any.javaClass.genericSuperclass
-  var superclass = any.javaClass.superclass
-  while (superclass != null) {
-    if (genericSuperclass is ParameterizedType) {
-      genericSuperclass.actualTypeArguments.forEach {
-        try {
-          return block.invoke(it as Class<VB>)
-        } catch (e: NoSuchMethodException) {
-        } catch (e: ClassCastException) {
-        } catch (e: InvocationTargetException) {
-          throw e.targetException
-        }
+  @JvmStatic
+  fun <VB : ViewBinding> inflateWithGeneric(genericOwner: Any, layoutInflater: LayoutInflater): VB =
+    withGenericBindingClass<VB>(genericOwner) { clazz ->
+      clazz.getMethod("inflate", LayoutInflater::class.java).invoke(null, layoutInflater) as VB
+    }.also { binding ->
+      if (genericOwner is ComponentActivity && binding is ViewDataBinding) {
+        binding.lifecycleOwner = genericOwner
       }
     }
-    genericSuperclass = superclass.genericSuperclass
-    superclass = superclass.superclass
+
+  @JvmStatic
+  fun <VB : ViewBinding> inflateWithGeneric(genericOwner: Any, parent: ViewGroup): VB =
+    inflateWithGeneric(genericOwner, LayoutInflater.from(parent.context), parent, false)
+
+  @JvmStatic
+  fun <VB : ViewBinding> inflateWithGeneric(genericOwner: Any, layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean): VB =
+    withGenericBindingClass<VB>(genericOwner) { clazz ->
+      clazz.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
+        .invoke(null, layoutInflater, parent, attachToParent) as VB
+    }.also { binding ->
+      if (genericOwner is Fragment && binding is ViewDataBinding) {
+        binding.lifecycleOwner = genericOwner.viewLifecycleOwner
+      }
+    }
+
+  @JvmStatic
+  fun <VB : ViewBinding> bindWithGeneric(genericOwner: Any, view: View): VB =
+    withGenericBindingClass<VB>(genericOwner) { clazz ->
+      clazz.getMethod("bind", View::class.java).invoke(null, view) as VB
+    }.also { binding ->
+      if (genericOwner is Fragment && binding is ViewDataBinding) {
+        binding.lifecycleOwner = genericOwner.viewLifecycleOwner
+      }
+    }
+
+  private fun <VB : ViewBinding> withGenericBindingClass(genericOwner: Any, block: (Class<VB>) -> VB): VB {
+    var genericSuperclass = genericOwner.javaClass.genericSuperclass
+    var superclass = genericOwner.javaClass.superclass
+    while (superclass != null) {
+      if (genericSuperclass is ParameterizedType) {
+        genericSuperclass.actualTypeArguments.forEach {
+          try {
+            return block.invoke(it as Class<VB>)
+          } catch (e: NoSuchMethodException) {
+          } catch (e: ClassCastException) {
+          } catch (e: InvocationTargetException) {
+            var tagException: Throwable? = e
+            while (tagException is InvocationTargetException) {
+              tagException = e.cause
+            }
+            throw tagException ?: IllegalArgumentException("ViewBinding generic was found, but creation failed.")
+          }
+        }
+      }
+      genericSuperclass = superclass.genericSuperclass
+      superclass = superclass.superclass
+    }
+    throw IllegalArgumentException("There is no generic of ViewBinding.")
   }
-  throw IllegalArgumentException("There is no generic of ViewBinding.")
 }

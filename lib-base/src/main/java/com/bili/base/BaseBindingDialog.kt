@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
-import com.bili.base.utils.inflateBindingWithGeneric
+import com.bili.base.utils.ViewBindingUtil.inflateWithGeneric
 
 /**
  * @description:
@@ -21,7 +21,7 @@ abstract class BaseBindingDialog<VB : ViewBinding>(context: Context, themeResId:
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    binding = inflateBindingWithGeneric(layoutInflater)
+    binding = inflateWithGeneric(this, layoutInflater)
     setContentView(binding.root)
   }
 }

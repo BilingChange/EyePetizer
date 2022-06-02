@@ -69,7 +69,7 @@ object AppConfig {
         const val kotlin_version = "1.5.31"
 
         /** core 版本 */
-        const val core_version = "1.3.2"
+        const val core_version = "1.6.0"
 
         /** room 版本 */
         const val room_version = "2.2.5"
@@ -147,7 +147,7 @@ object AppConfig {
         const val multitype = "4.2.0"
 
         /** mmkv 版本 */
-        const val tencent_mmkv = "1.2.5"
+        const val tencent_mmkv = "1.2.13"
 
         /** constraintlayout 版本 */
         const val constraintlayout_version = "2.1.1"
@@ -161,14 +161,14 @@ object AppConfig {
     object Dependencies {
 
         /** 测试 */
-        const val test_junit = "junit:junit:4.13"
+        const val test_junit = "junit:junit:4.13.2"
         const val test_mokito_inline = "org.mockito:mockito-inline:${version.test_mokito_version}"
         const val test_mokito_android = "org.mockito:mockito-android:${version.test_mokito_version}"
         const val test_uiautomator_v18 = "com.android.support.test.uiautomator:uiautomator-v18:2.1.3"
-        const val androidx_test_ext_junit = "androidx.test.ext:junit:1.1.2"
+        const val androidx_test_ext_junit = "androidx.test.ext:junit:1.1.3"
         const val androidx_test_rules = "androidx.test:rules:1.2.0"
         const val androidx_test_runner = "androidx.test:runner:1.2.0"
-        const val androidx_test_espresso_core = "androidx.test.espresso:espresso-core:3.3.0"
+        const val androidx_test_espresso_core = "androidx.test.espresso:espresso-core:3.4.0"
 
         /** Kotlin */
         const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${version.kotlin_version}"

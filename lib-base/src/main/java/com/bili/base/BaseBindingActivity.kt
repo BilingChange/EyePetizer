@@ -3,7 +3,7 @@ package com.bili.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.bili.base.utils.inflateBindingWithGeneric
+import com.bili.base.utils.ViewBindingUtil.inflateWithGeneric
 
 /**
  * @description:
@@ -19,7 +19,7 @@ abstract class BaseBindingActivity<VB : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = inflateBindingWithGeneric(layoutInflater)
+        binding = inflateWithGeneric(this, layoutInflater)
         setContentView(binding.root)
     }
 }

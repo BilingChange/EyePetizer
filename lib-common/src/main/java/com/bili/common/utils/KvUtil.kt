@@ -7,9 +7,9 @@ import java.util.*
 /**
  * @description:
  *
- * @author: bili
- * @e-mail: bilingchange@126.com
- * @date: on 2022/4/21    15:03.
+ * @author: Y.F
+ * @e-mail: yuanfan3@01zhuanche.com
+ * @date: on 2022/6/2    15:15.
  **/
 object KvUtil {
     var mmkv: MMKV? = null

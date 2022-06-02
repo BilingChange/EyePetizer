@@ -1,7 +1,5 @@
 
-@file:Suppress("unused")
-
-package com.dylanc.viewbinding
+package com.bili.base.utils
 
 import android.app.Dialog
 import android.view.LayoutInflater

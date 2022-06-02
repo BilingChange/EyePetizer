@@ -84,7 +84,7 @@ android {
     productFlavors {
         // 正式线上版本
         create("online") {
-             dimension = "version"
+            //dimension = "version"
             // 版本名后缀
             versionNameSuffix = "_online"
             // 是否使用线上环境
@@ -93,7 +93,7 @@ android {
 
         // 测试版本
         create("offline") {
-            dimension = "version"
+            //dimension = "version"
             // 应用包名后缀
             applicationIdSuffix = ".offline"
             // 版本名后缀
@@ -104,7 +104,7 @@ android {
 
         // 开发版本
         create("dev") {
-            dimension = "version"
+            //dimension = "version"
             // 应用包名后缀
             applicationIdSuffix = ".dev"
             // 版本名后缀
@@ -167,7 +167,7 @@ android {
 
     // kotlin Jvm 版本
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
         freeCompilerArgs += arrayOf("-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi")
     }
 }
@@ -266,8 +266,8 @@ dependencies {
 //    implementation(project(":lib_recyclerview"))
 //    implementation(project(":lib_views_custom"))
 
-//    implementation(project(":lib-base"))
-//    implementation(project(":lib-common"))
+    implementation(project(":lib-base"))
+    implementation(project(":lib-common"))
 
     // 测试
     testImplementation(AppConfig.deps.test_junit)

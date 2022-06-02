@@ -1,5 +1,3 @@
-import com.android.build.api.dsl.Lint
-
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -22,7 +20,7 @@ android {
     }
 
     buildTypes {
-        getByName("debug") {
+        debug {
             isMinifyEnabled = false
             isShrinkResources = false
             proguardFiles(
@@ -30,9 +28,9 @@ android {
             )
             signingConfig = signingConfigs.findByName("debug")
         }
-        getByName("release") {
+        release {
             isMinifyEnabled = true
-            isShrinkResources = true
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
@@ -55,16 +53,10 @@ android {
         viewBinding = true
     }
 
-    // 出现错误不终止编译
-    fun Lint.() {
-        // 出现错误不终止编译
-        abortOnError = false
-    }
-
     // Java 版本配置
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     // kotlin Jvm 版本

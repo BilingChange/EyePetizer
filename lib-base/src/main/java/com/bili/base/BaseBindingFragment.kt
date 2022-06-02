@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.bili.base.utils.inflateBindingWithGeneric
+import com.bili.base.utils.ViewBindingUtil.inflateWithGeneric
 
 /**
  * @description:
@@ -22,7 +22,7 @@ abstract class BaseBindingFragment<VB : ViewBinding> : Fragment() {
   val binding: VB get() = _binding!!
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-    _binding = inflateBindingWithGeneric(layoutInflater, container, false)
+    _binding = inflateWithGeneric(this, inflater, container, false)
     return binding.root
   }
 
